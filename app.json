@@ -22,6 +22,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "platforms": ["ios", "android", "web"],
+    "expo": {
+      "scheme": "yourapp",
+      "oauth": {
+        "redirectUri": "https://auth.expo.io/@kboy143/JobScout"
+      }
     }
   }
 }

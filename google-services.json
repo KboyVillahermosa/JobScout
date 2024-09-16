@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "489769798345",
+    "project_id": "jobfinderapp-93da0",
+    "storage_bucket": "jobfinderapp-93da0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489769798345:android:0c38adacee935f5d639b18",
+        "android_client_info": {
+          "package_name": "JobScout.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz8A4Tw5roOZylL6f2_jW8Svx8wOSX038"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
