@@ -34,7 +34,7 @@ export default function SignUp({ navigation }) {
         <Text style={styles.imageText}>Job<Text style={styles.scout}>Scout</Text></Text>
         <Image source={require("../assets/logoFinal.png")} style={styles.image} />
       </View>
-      <Text style={styles.signUpTitles}>Sign Up</Text>
+      <Text style={styles.signUpTitles}>Sign Ups</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"

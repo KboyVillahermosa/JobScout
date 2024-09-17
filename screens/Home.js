@@ -51,6 +51,9 @@ export default function Home({ navigation }) {
           <TouchableOpacity style={styles.logout} onPress={handleLogout}>
             <Text style={styles.logoutText}>LogOut</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.logout}  onPress={() => navigation.navigate("JobBoard")}>
+            <Text style={styles.logoutText}>Search Job</Text>
+          </TouchableOpacity>
         </View>
 
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
