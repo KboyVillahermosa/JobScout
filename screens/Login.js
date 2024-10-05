@@ -22,7 +22,7 @@ export default function Login({ navigation }) {
         // Logged in successfully
         const user = userCredential.user;
         Alert.alert("Login successful!");
-        navigation.navigate("Home"); // Navigate to home screen
+        navigation.navigate("Albums");
       })
       .catch((error) => {
         Alert.alert("Error:", error.message);

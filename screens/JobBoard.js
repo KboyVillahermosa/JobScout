@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Linking, StyleSheet } from 'react-native';
-import { TextInput, Button, ActivityIndicator, PaperProvider } from 'react-native-paper';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Linking, Icon } from 'react-native';
+import { TextInput, Button, ActivityIndicator, PaperProvider, IconButton } from 'react-native-paper';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+
+
+// Array for popular job categories with links
+const popularWorks = [
+  { id: '1', title: 'Frontend Development', link: 'https://www.linkedin.com/jobs/search/?keywords=frontend%20developer', icon: 'code-tags' },
+  { id: '2', title: 'Fullstack Development', link: 'https://www.linkedin.com/jobs/search/?keywords=fullstack%20developer', icon: 'developer-mode' },
+  { id: '3', title: 'Backend Development', link: 'https://www.linkedin.com/jobs/search/?keywords=backend%20developer', icon: 'cloud' },
+  { id: '4', title: 'UI/UX Design', link: 'https://www.linkedin.com/jobs/search/?keywords=uiux%20designer', icon: 'design-services' },
+];
 
 export default function JobBoard() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,19 +21,20 @@ export default function JobBoard() {
 
   const navigation = useNavigation();
 
+  // Function to fetch jobs
   const searchJobs = async () => {
     setLoading(true);
     try {
       const options = {
         method: 'GET',
         url: 'https://jsearch.p.rapidapi.com/search',
-        params: { 
-          query: searchQuery, 
-          location: location,
-          num_pages: '1' 
+        params: {
+          query: searchQuery || 'software developer', 
+          location: location || 'remote',             
+          num_pages: '1',
         },
         headers: {
-          'X-RapidAPI-Key': '73e2260d8cmshc17285a275c812ap10ec6djsn301f833294f7',
+          'X-RapidAPI-Key': '2383f72fb6msh6426b331d6e5dfdp16cbaejsneea70d45b3a7',
           'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
         },
       };
@@ -38,6 +48,20 @@ export default function JobBoard() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    searchJobs();
+  }, []);
+
+  // Function to render each popular work item
+  const renderPopularWorkItem = ({ item }) => (
+    <TouchableOpacity 
+      style={styles.popularWorkCard} 
+      onPress={() => Linking.openURL(item.link)}>
+      <Text style={styles.popularWorkTitle}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+
 
   const renderJobItem = ({ item }) => (
     <View style={styles.jobItem}>
@@ -70,16 +94,28 @@ export default function JobBoard() {
           onChangeText={setLocation}
           style={styles.input}
         />
-       
-        <TouchableOpacity style={styles.contentSearch}>
-        <Text  onPress={searchJobs} style={styles.searchButton}>
-          Search
-        </Text>
+        
+        <TouchableOpacity style={styles.contentSearch} onPress={searchJobs}>
+          <Text style={styles.searchButton}>Search</Text>
         </TouchableOpacity>
-       
+
+        {/* Popular Works Section */}
+        <View style={styles.popularWorksContainer}>
+          <Text style={styles.popularWorksTitle}>Popular Works</Text>
+          <FlatList
+            data={popularWorks}
+            renderItem={renderPopularWorkItem}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.popularWorksList}
+          />
+        </View>
+
         {loading ? (
           <ActivityIndicator animating={true} />
         ) : (
+       
           <FlatList
             data={jobs}
             renderItem={renderJobItem}
@@ -100,7 +136,6 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 10,
-
   },
   contentSearch: {
     alignItems: 'center',
@@ -109,6 +144,27 @@ const styles = StyleSheet.create({
   searchButton: {
     padding: 10,
     color: 'white',
+  },
+  popularWorksContainer: {
+    marginVertical: 20,
+  },
+  popularWorksTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  popularWorksList: {
+    paddingHorizontal: 5,
+  },
+  popularWorkCard: {
+    backgroundColor: '#D61F69',
+    padding: 15,
+    borderRadius: 5,
+    marginRight: 10,
+  },
+  popularWorkTitle: {
+    color: 'white',
+    fontWeight: 'bold',
   },
   jobList: {
     marginTop: 20,
