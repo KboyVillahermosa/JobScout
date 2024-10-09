@@ -96,22 +96,22 @@ const ProfileCompletionScreen = ({ navigation }) => {
       <TextInput placeholder="Phone Number" value={phoneNumber} onChangeText={setPhoneNumber} keyboardType="phone-pad" style={styles.input} />
       
       <TouchableOpacity style={styles.button}>
-        <Button title="Upload Profile Image" onPress={handleImagePick} style={styles.uploadProfile}/>
+        <Button title="Upload Profile Image" onPress={handleImagePick} style={styles.uploadProfile } color={'#D61F69'}/>
         {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
       </TouchableOpacity>
 
       <TouchableOpacity  style={styles.button}>
-        <Button title="Upload CV" onPress={handleCvPick} />
+        <Button title="Upload CV" onPress={handleCvPick} color={'#D61F69'} />
         {cvUri && <Text style={styles.cvText}>CV uploaded: {cvUri}</Text>}
       </TouchableOpacity>
 
       <TouchableOpacity  style={styles.button}>
-        <Button title="Submit" onPress={handleSubmit} style={styles.submit} />
+        <Button title="Submit" onPress={handleSubmit} style={styles.submit} color={'#D61F69'} />
       </TouchableOpacity>
 
       {/* Skip button to navigate to Home */}
       <TouchableOpacity  style={styles.skip}>
-        <Text onPress={() => navigation.navigate('Home')} style={styles.submit}>Skip</Text>
+        <Text onPress={() => navigation.navigate('Home')} style={styles.skipContent}>Skip</Text>
       </TouchableOpacity>
     </View>
   );
@@ -150,6 +150,14 @@ const styles = StyleSheet.create({
   submit: {
     height: 50,
   },
+  skip: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  skipContent: {
+    fontSize: 20,
+  }
 });
 
 export default ProfileCompletionScreen;

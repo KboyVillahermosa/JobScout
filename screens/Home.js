@@ -19,11 +19,11 @@ import {
 import JobBoard from "./JobBoard";
 import RecentsScreen from "./RecentsScreen";
 import NotificationsScreen from "./NotificationsScreen";
-import Profile from "./Profile"; // Ensure this import is present
+import Profile from "./Profile"; 
 
 export default function Home({ navigation }) {
   const [user, setUser] = React.useState(null);
-  const [sidebarVisible, setSidebarVisible] = React.useState(false); // Initialize sidebarVisible state
+  const [sidebarVisible, setSidebarVisible] = React.useState(false); 
   const slideAnim = React.useRef(new Animated.Value(-Dimensions.get("window").width * 0.7)).current;
 
   React.useEffect(() => {

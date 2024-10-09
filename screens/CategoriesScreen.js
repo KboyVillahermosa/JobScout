@@ -75,15 +75,21 @@ const styles = StyleSheet.create({
   },
   categoryButton: {
     padding: 15,
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
     borderRadius: 5,
     marginBottom: 10,
+    shadowColor: '#000',
+    elevation: 6,
+    shadowRadius: 5,
+    shadowOpacity: 2.5,
+ 
   },
+  
   categoryButtonSelected: {
     backgroundColor: '#D61F69', 
   },
   categoryText: {
-    color: 'white',
+    color: 'black',
     fontSize: 18,
     textAlign: 'center',
   },

@@ -18,7 +18,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 // Create the stack navigator
 const Stack = createStackNavigator();
 
-// Define your navigation structure
+
 const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Login">
@@ -30,9 +30,27 @@ const AppNavigator = () => {
       <Stack.Screen name="JobDescription" component={JobDescription} options={{ title: 'Job Description' }} />
       <Stack.Screen name="Music" component={Music} options={{ title: 'Music' }} />
       <Stack.Screen name="Profile" component={Profile} options={{ title: 'Profile' }} />
-      <Stack.Screen name="JobCategory" component={JobCategoryScreen} options={{ title: 'Job Categories' }} />
-      <Stack.Screen name="ProfileCompletion" component={ProfileCompletionScreen} options={{ title: 'Profile Completion' }} />
-      <Stack.Screen name="Categories" component={CategoriesScreen} />
+      <Stack.Screen name="JobCategory" component={JobCategoryScreen} options={{ title: 'Job Categories' }}  />
+      <Stack.Screen name="ProfileCompletion" component={ProfileCompletionScreen} 
+       options={{ title: 'Profile Completion',
+         headerStyle: { backgroundColor: '#D61F69'},
+         headerTitleStyle: { fontWeight: 'bold'},
+         headerTintColor: 'white',
+         
+         }} />
+      <Stack.Screen  name="Categories" component={CategoriesScreen}  
+      options={{ 
+ title: 'Categories',
+    headerStyle: { 
+      backgroundColor: '#D61F69', 
+    },
+    headerTintColor: '#fff', 
+    headerTitleStyle: {
+      fontWeight: 'bold', 
+    },
+  }} 
+/>
+
     </Stack.Navigator>
   );
 };

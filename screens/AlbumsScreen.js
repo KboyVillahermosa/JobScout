@@ -15,7 +15,7 @@ export default function AlbumsScreen({ navigation }) {
     >
       <View style={styles.overlay}>
         <View style={styles.container}>
-          <Text style={styles.welcomeText}> <Text style={styles.jobsCount}>5,000+ Jobs</Text> Are Waiting for You!</Text>
+          <Text style={styles.welcomeText}> <Text style={styles.jobsCount}>5,000+ Jobs</Text> Are Waiting for You</Text>
           <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>
